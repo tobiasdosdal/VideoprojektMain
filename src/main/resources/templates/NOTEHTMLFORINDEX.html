@@ -1,0 +1,55 @@
+
+<!-- NOTE FOR INDEX HTML THYMELEAF -->
+
+<div class="container">
+    <div class="square" th:each="bil : ${bilList}">
+        <img th:src="${bil.billede}" alt="Car Image" />
+        <div>
+            <label>Name:</label>
+            <span th:text="${bil.navn}">Name</span>
+        </div>
+        <div>
+            <label>Model:</label>
+            <span th:text="${bil.alder}">Model</span>
+        </div>
+        <div>
+            <label>Type:</label>
+            <span th:text="${bil.type}">Type</span>
+        </div>
+        <div>
+            <label>Color:</label>
+            <span th:text="${bil.farve}">Color</span>
+        </div>
+        <div>
+            <label>Lisenceplate:</label>
+            <span th:text="${bil.nummerplade}">Lisenceplate</span>
+        </div>
+    </div>
+</div>
+
+
+<div class="container">
+    <div class="square">
+        <img/>
+        <div>
+            <label>Navn:</label>
+            <span>Navn</span>
+        </div>
+        <div>
+            <label>Alder:</label>
+            <span>Alder</span>
+        </div>
+        <div>
+            <label>Type:</label>
+            <span>Type</span>
+        </div>
+        <div>
+            <label>Farve:</label>
+            <span>Farve</span>
+        </div>
+        <div>
+            <label>Nummerplade:</label>
+            <span>Nummerplade</span>
+        </div>
+    </div>
+</div>

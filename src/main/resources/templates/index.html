@@ -1,0 +1,141 @@
+<!-- KOPIER DETTE DOKUMENT TIL INDEX -->
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MainPage</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f2f2f2;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            width: 100%;
+        }
+        .square {
+            background: #fff;
+            border: 2px solid #ccc;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 10px 0;
+            width: 300px;
+            height: 300px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            align-items: flex-start;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .square img {
+            width: 100%;
+            height: 150px;
+            margin-bottom: 15px;
+            border-radius: 4px;
+            object-fit: cover;
+        }
+        .square div {
+            width: 100%;
+        }
+        .square label {
+            font-weight: bold;
+        }
+        .buttons {
+            display: flex;
+            margin-top: 20px;
+            justify-content: center;
+            align-items: center;
+        }
+        .btn {
+            display: inline-block;
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            margin: 0 5px;
+            text-decoration: none;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+            text-align: center;
+        }
+        .btn:hover {
+            background-color: #45a049;
+        }
+        .modify-forms {
+            display: flex;
+            flex-direction: row;
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .modify-form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .modify-form input {
+            padding: 8px;
+            margin-bottom: 5px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="square" th:each="car : ${carList}">
+        <img th:src="@{'/img/' + ${car.image}}" alt="Car Image" />
+        <div>
+            <label>ID:</label>
+            <span th:text="${car.id}">ID</span>
+        </div>
+        <div>
+            <label>Name:</label>
+            <span th:text="${car.brand}">Name</span>
+        </div>
+        <div>
+            <label>Age:</label>
+            <span th:text="${car.age}">Age</span>
+        </div>
+        <div>
+            <label>Type:</label>
+            <span th:text="${car.type}">Type</span>
+        </div>
+        <div>
+            <label>Color:</label>
+            <span th:text="${car.colour}">Color</span>
+        </div>
+        <div>
+            <label>Lisenceplate:</label>
+            <span th:text="${car.licenseplate}">Lisenceplate</span>
+        </div>
+    </div>
+    <div class="buttons">
+        <a th:href="@{/createCar}" class="btn">Create</a>
+        <div class="modify-forms">
+            <form th:action="@{/showCar}" method="get" class="modify-form">
+                <input type="number" name="id" placeholder="Enter Car ID to read" required>
+                <button type="submit" class="btn">Read</button>
+            </form>
+
+            <form th:action="@{/deleteCar}" method="post" class="modify-form">
+                <input type="number" name="id" placeholder="Enter Car ID to delete" required>
+                <button type="submit" class="btn">Delete</button>
+            </form>
+
+            <form th:action="@{/updateCar}" method="get" class="modify-form">
+                <input type="number" name="id" placeholder="Enter Car ID to update" required>
+                <button type="submit" class="btn">Update</button>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>
