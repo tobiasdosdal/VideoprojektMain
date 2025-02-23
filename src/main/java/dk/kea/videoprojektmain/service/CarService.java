@@ -1,5 +1,8 @@
 package dk.kea.videoprojektmain.service;
 
+import org.springframework.stereotype.Service;
+
+@Service
 public class CarService {
 
     public String getImg (String brand, String colour) {

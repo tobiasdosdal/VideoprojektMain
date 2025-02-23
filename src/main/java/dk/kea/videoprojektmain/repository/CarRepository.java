@@ -27,7 +27,7 @@ public class CarRepository {
             while (resultSet.next()) {
                 Car bil = new Car();
                 bil.setId(resultSet.getInt("id"));
-                bil.setAge(resultSet.getInt("age"));
+                bil.setModelyear(resultSet.getInt("modelyear"));
                 bil.setBrand(resultSet.getString("brand"));
                 bil.setType(resultSet.getString("type"));
                 bil.setColour(resultSet.getString("colour"));
@@ -43,12 +43,12 @@ public class CarRepository {
     }
 
     public void save(Car bil) {
-        String sql = "INSERT INTO cars (brand, age, type, colour, licenseplate, img) VALUES (?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO cars (brand, modelyear, type, colour, licenseplate, img) VALUES (?, ?, ?, ?, ?, ?)";
         try (Connection connection = dataSource.getConnection();
              PreparedStatement statement = connection.prepareStatement(sql)) {
 
             statement.setString(1, bil.getBrand());
-            statement.setInt(2, bil.getAge());
+            statement.setInt(2, bil.getModelyear());
             statement.setString(3, bil.getType());
             statement.setString(4, bil.getColour());
             statement.setString(5, bil.getLicenseplate());
@@ -83,7 +83,7 @@ public class CarRepository {
                 if (resultSet.next()) {
                     car = new Car();
                     car.setId(resultSet.getInt("id"));
-                    car.setAge(resultSet.getInt("age"));
+                    car.setModelyear(resultSet.getInt("modelyear"));
                     car.setBrand(resultSet.getString("brand"));
                     car.setType(resultSet.getString("type"));
                     car.setColour(resultSet.getString("colour"));
@@ -99,12 +99,12 @@ public class CarRepository {
     }
 
     public void update(Car car) {
-        String sql = "UPDATE cars SET brand = ?, age = ?, type = ?, colour = ?, licenseplate = ?, img = ? WHERE id = ?";
+        String sql = "UPDATE cars SET brand = ?, modelyear = ?, type = ?, colour = ?, licenseplate = ?, img = ? WHERE id = ?";
         try (Connection connection = dataSource.getConnection();
              PreparedStatement statement = connection.prepareStatement(sql)) {
 
             statement.setString(1, car.getBrand());
-            statement.setInt(2, car.getAge());
+            statement.setInt(2, car.getModelyear());
             statement.setString(3, car.getType());
             statement.setString(4, car.getColour());
             statement.setString(5, car.getLicenseplate());

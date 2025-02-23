@@ -2,6 +2,7 @@ package dk.kea.videoprojektmain.controller;
 
 import dk.kea.videoprojektmain.model.Car;
 import dk.kea.videoprojektmain.repository.CarRepository;
+import dk.kea.videoprojektmain.repository.CarRepositorySTUB;
 import dk.kea.videoprojektmain.service.CarService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -13,8 +14,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class CarController {
 
+    /*@Autowired
+    CarRepository carRepo;*/
+
     @Autowired
-    CarRepository carRepo;
+    CarRepositorySTUB carRepo;
 
     CarService carService = new CarService();
 
@@ -26,14 +30,34 @@ public class CarController {
     @PostMapping("/createCar")
     public String createCar(
             @RequestParam("brand") String brand,
-            @RequestParam("age") int age,
+            @RequestParam("modelyear") int modelyear,
             @RequestParam("type") String type,
             @RequestParam("colour") String colour,
             @RequestParam("licenseplate") String licenseplate) {
 
+        // move to service class
+
+        /*String img = null;
+
+        if (brand.contains("Volvo")) {
+            img = "blåvolvostationcar.jpg";
+        } else if (brand.contains("VW")){
+            if (colour.contains("grøn") || colour.contains("green")) {
+                img = "GrønVWpolo.jpg";
+            } else {
+                img = "GulVWBobbel.jpg";
+            }
+        } else if (brand.contains("Western Star")) {
+            img = "WesternstarRødTruck.jpg";
+        } else {
+            img = "generic.jpg";
+        }
+        return img;
+    }*/
+
         String img = carService.getImg(brand, colour);
 
-        Car car = new Car(brand, age, type, colour, licenseplate, img);
+        Car car = new Car(brand, modelyear, type, colour, licenseplate, img);
         carRepo.save(car);
         return "redirect:/";
     }
@@ -55,13 +79,13 @@ public class CarController {
     public String postupdateCar(
         @RequestParam("id") int id,
         @RequestParam("brand") String brand,
-        @RequestParam("age") int age,
+        @RequestParam("modelyear") int modelyear,
         @RequestParam("type") String type,
         @RequestParam("colour") String colour,
         @RequestParam("licenseplate") String licenseplate) {
 
         String img = carService.getImg(brand, colour);
-        Car car = new Car(id, brand, age, type, colour, licenseplate, img);
+        Car car = new Car(id, brand, modelyear, type, colour, licenseplate, img);
         carRepo.update(car);
         return "redirect:/";
     }

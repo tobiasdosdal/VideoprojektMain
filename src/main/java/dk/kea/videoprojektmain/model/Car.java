@@ -5,7 +5,7 @@ public class Car {
     // id gør det nemmere at håndtere databasen ift. CRUD senere.
     int id;
     String brand;
-    int age;
+    int modelyear;
     String type;
     String colour;
     String licenseplate;
@@ -13,18 +13,18 @@ public class Car {
 
 
     // contructors
-    public Car(int id, String brand, int age, String type, String colour, String licenseplate, String image) {
+    public Car(int id, String brand, int modelyear, String type, String colour, String licenseplate, String image) {
         this.id = id;
         this.brand = brand;
-        this.age = age;
+        this.modelyear = modelyear;
         this.type = type;
         this.colour = colour;
         this.licenseplate = licenseplate;
         this.image = image;
     }
-    public Car(String brand, int age, String type, String colour, String licenseplate, String image) {
+    public Car(String brand, int modelyear, String type, String colour, String licenseplate, String image) {
         this.brand = brand;
-        this.age = age;
+        this.modelyear = modelyear;
         this.type = type;
         this.colour = colour;
         this.licenseplate = licenseplate;
@@ -59,12 +59,12 @@ public class Car {
         this.brand = brand;
     }
 
-    public int getAge() {
-        return age;
+    public int getModelyear() {
+        return modelyear;
     }
 
-    public void setAge(int age) {
-        this.age = age;
+    public void setModelyear(int modelyear) {
+        this.modelyear = modelyear;
     }
 
     public String getType() {
