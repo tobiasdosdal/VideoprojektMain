@@ -20,8 +20,8 @@
             <span th:text="${car.brand}">Brand</span>
         </div>
         <div>
-            <label>Age:</label>
-            <span th:text="${car.age}">Age</span>
+            <label>Modelyear:</label>
+            <span th:text="${car.modelyear}">Modelyear</span>
         </div>
         <div>
             <label>Type:</label>
@@ -32,28 +32,28 @@
             <span th:text="${car.colour}">Color</span>
         </div>
         <div>
-            <label>Lisenceplate:</label>
-            <span th:text="${car.licenseplate}">Lisenceplate</span>
+            <label>Licenseplate:</label>
+            <span th:text="${car.licenseplate}">Licenseplate</span>
         </div>
     </div>
-    <div class="buttons">
-        <a th:href="@{/createCar}" class="btn">Create</a>
-        <div class="modify-forms">
-            <form th:action="@{/showCar}" method="get" class="modify-form">
-                <input type="number" name="id" placeholder="Enter Car ID to read" required>
-                <button type="submit" class="btn">Read</button>
-            </form>
+</div>
+<div class="buttons">
+    <a th:href="@{/getCreateCar}" class="btn">Create</a>
+    <div class="modify-forms">
+        <form th:action="@{/showCar}" method="get" class="modify-form">
+            <input type="number" name="id" placeholder="Enter Car ID to read" required>
+            <button type="submit" class="btn">Read</button>
+        </form>
 
-            <form th:action="@{/deleteCar}" method="post" class="modify-form">
-                <input type="number" name="id" placeholder="Enter Car ID to delete" required>
-                <button type="submit" class="btn">Delete</button>
-            </form>
+        <form th:action="@{/deleteCar}" method="post" class="modify-form">
+            <input type="number" name="id" placeholder="Enter Car ID to delete" required>
+            <button type="submit" class="btn">Delete</button>
+        </form>
 
-            <form th:action="@{/updateCar}" method="get" class="modify-form">
-                <input type="number" name="id" placeholder="Enter Car ID to update" required>
-                <button type="submit" class="btn">Update</button>
-            </form>
-        </div>
+        <form th:action="@{/getUpdateCar}" method="get" class="modify-form">
+            <input type="number" name="id" placeholder="Enter Car ID to update" required>
+            <button type="submit" class="btn">Update</button>
+        </form>
     </div>
 </div>
 </body>

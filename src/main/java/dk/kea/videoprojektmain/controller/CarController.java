@@ -2,6 +2,7 @@ package dk.kea.videoprojektmain.controller;
 
 import dk.kea.videoprojektmain.model.Car;
 import dk.kea.videoprojektmain.repository.CarRepository;
+import dk.kea.videoprojektmain.repository.CarRepositorySTUB;
 import dk.kea.videoprojektmain.service.CarService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,52 +17,50 @@ public class CarController {
     @Autowired
     CarRepository carRepo;
 
-    CarService carService = new CarService();
+    /*@Autowired
+    CarRepositorySTUB carRepo;*/
 
-    @GetMapping("/createCar")
+    @Autowired
+    CarService carService;
+
+    @GetMapping("/getCreateCar")
     public String createCar() {
         return "createCar";
     }
 
-    @PostMapping("/createCar")
-    public String createCar(
+    @PostMapping("/saveCreateCar")
+    public String postCreateCar(
             @RequestParam("brand") String brand,
-            @RequestParam("age") int age,
+            @RequestParam("modelyear") int modelyear,
             @RequestParam("type") String type,
             @RequestParam("colour") String colour,
             @RequestParam("licenseplate") String licenseplate) {
 
         String img = carService.getImg(brand, colour);
 
-        Car car = new Car(brand, age, type, colour, licenseplate, img);
+        Car car = new Car(brand, modelyear, type, colour, licenseplate, img);
         carRepo.save(car);
         return "redirect:/";
     }
 
-    @PostMapping("/deleteCar")
-    public String deleteCar(@RequestParam("id") int id) {
-        carRepo.delete(id);
-        return "redirect:/";
-    }
-
-    @GetMapping("/updateCar")
+    @GetMapping("/getUpdateCar")
     public String updateCar(@RequestParam("id") int id, Model model) {
         Car car = carRepo.getCarById(id);
         model.addAttribute(car);
         return "updateCar";
     }
 
-    @PostMapping("/updateCar")
+    @PostMapping("/saveUpdateCar")
     public String postupdateCar(
-        @RequestParam("id") int id,
-        @RequestParam("brand") String brand,
-        @RequestParam("age") int age,
-        @RequestParam("type") String type,
-        @RequestParam("colour") String colour,
-        @RequestParam("licenseplate") String licenseplate) {
+            @RequestParam("id") int id,
+            @RequestParam("brand") String brand,
+            @RequestParam("modelyear") int modelyear,
+            @RequestParam("type") String type,
+            @RequestParam("colour") String colour,
+            @RequestParam("licenseplate") String licenseplate) {
 
         String img = carService.getImg(brand, colour);
-        Car car = new Car(id, brand, age, type, colour, licenseplate, img);
+        Car car = new Car(id, brand, modelyear, type, colour, licenseplate, img);
         carRepo.update(car);
         return "redirect:/";
     }
@@ -71,7 +70,16 @@ public class CarController {
 
         Car car = carRepo.getCarById(id);
         model.addAttribute(car);
+
         return "showCar";
+    }
+
+    @PostMapping("/deleteCar")
+    public String deleteCar(@RequestParam("id") int id) {
+
+        carRepo.delete(id);
+
+        return "redirect:/";
     }
 
 }
