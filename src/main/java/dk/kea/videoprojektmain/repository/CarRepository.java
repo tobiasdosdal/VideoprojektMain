@@ -16,7 +16,7 @@ public class CarRepository {
     @Autowired
     private DataSource dataSource;
     public ArrayList<Car> getAllCars() {
-        ArrayList<Car> bilList = new ArrayList<>();
+        ArrayList<Car> carList = new ArrayList<>();
         String sql = "SELECT * FROM cars";
 
         try (Connection connection = dataSource.getConnection();
@@ -24,34 +24,34 @@ public class CarRepository {
              ResultSet resultSet = statement.executeQuery()) {
 
             while (resultSet.next()) {
-                Car bil = new Car();
-                bil.setId(resultSet.getInt("id"));
-                bil.setModelyear(resultSet.getInt("modelyear"));
-                bil.setBrand(resultSet.getString("brand"));
-                bil.setType(resultSet.getString("type"));
-                bil.setColour(resultSet.getString("colour"));
-                bil.setLicenseplate(resultSet.getString("licenseplate"));
-                bil.setImage(resultSet.getString("img"));
-                bilList.add(bil);
+                Car car = new Car();
+                car.setId(resultSet.getInt("id"));
+                car.setBrand(resultSet.getString("brand"));
+                car.setModelyear(resultSet.getInt("modelyear"));
+                car.setType(resultSet.getString("type"));
+                car.setColour(resultSet.getString("colour"));
+                car.setLicenseplate(resultSet.getString("licenseplate"));
+                car.setImage(resultSet.getString("img"));
+                carList.add(car);
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
 
-        return bilList;
+        return carList;
     }
 
-    public void save(Car bil) {
+    public void save(Car car) {
         String sql = "INSERT INTO cars (brand, modelyear, type, colour, licenseplate, img) VALUES (?, ?, ?, ?, ?, ?)";
         try (Connection connection = dataSource.getConnection();
              PreparedStatement statement = connection.prepareStatement(sql)) {
 
-            statement.setString(1, bil.getBrand());
-            statement.setInt(2, bil.getModelyear());
-            statement.setString(3, bil.getType());
-            statement.setString(4, bil.getColour());
-            statement.setString(5, bil.getLicenseplate());
-            statement.setString(6, bil.getImage());
+            statement.setString(1, car.getBrand());
+            statement.setInt(2, car.getModelyear());
+            statement.setString(3, car.getType());
+            statement.setString(4, car.getColour());
+            statement.setString(5, car.getLicenseplate());
+            statement.setString(6, car.getImage());
 
             statement.executeUpdate();
         } catch (SQLException e) {

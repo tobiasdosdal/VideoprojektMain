@@ -1,4 +1,50 @@
 
+VIDEOPROJEKT
+VIDEO 3
+
+1. Dependencies
+2. MySql workbench + script
+3. Tilkobling til Intellij
+4. Opdater forside til at virke med database
+
+
+-   databaseScript.sql
+
+
+NOTE:
+Denne video kræver MySql workbench.
+Vi starter hvor video 2 sluttede.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 # VIDEOPROJEKT
 
 ### Indholdsfortegnelse:
