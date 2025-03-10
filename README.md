@@ -22,6 +22,7 @@
 
 ##### Video 1
 -   Video link:                 https://youtu.be/_SEtJOwCbM8
+-   Link til Billeder:          https://github.com/JannickHansen/VideoProjektVideo1/tree/main/img
 
 ##### Video 2
 -   Video link:                 https://youtu.be/llU4Pq2z2as
