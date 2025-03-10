@@ -28,7 +28,7 @@
 -   Video link:                 https://youtu.be/llU4Pq2z2as
 
 ##### Video 3
--   Video link:                 https://youtu.be/sJ2xTJ4SmfY
+-   Video link:                 https://youtu.be/XKZVN45NGsI
 -   Link til SQL Script:        https://github.com/JannickHansen/VideoProjektVideo1/blob/main/databaseScript.sql
 
 ##### Video 4
